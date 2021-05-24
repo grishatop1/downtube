@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100vh;  
+}
+
+:root {
+    --primary-color: #ab47bc;
+    --light-color: #df78ef;
+    --dark-color: #790e8b;
+}
