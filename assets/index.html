@@ -9,16 +9,42 @@
 </head>
 <body>
 
-<div class="header pywebview-drag-region">
-    <div class="header-text">
-        DownTube
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+    <a href="#">HOME</a>
+    <a href="#">Downloads</a>
+    <a href="#">Settings</a>
+    <a href="#">Report a bug</a>
+</div>
+
+<div id="main">
+    <div class="header">
+        <div class="menu-icon-block" onclick="toggleNav()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="menunav">
+                <rect id="rect3" x="2" y="12" width="16" height="2" fill="white"/>
+                <rect id="rect2" x="2" y="8" width="16" height="2" fill="white"/>
+                <rect id="rect1" x="2" y="4" width="16" height="2" fill="white"/>
+                </g>
+            </svg>                  
+        </div>
+        <div class="header-text">
+            DownTube
+        </div>
+
+        <div class="header-drag pywebview-drag-region">
+        </div>
+
+        <div class="page" id="home-page"></div>
+        <div class="page" id="downloads-page"></div>
+        <div class="page" id="settings-page"></div>
     </div>
-    <div class="header-icons">
-        <button id="resize"><img src="media/resize.svg" /></button>
-        <button id="exit"><img src="media/exit.svg" /></button>
+
+    <div class="exit-block">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF" onclick="pywebview.api.quit()"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
     </div>
 </div>
 
-<script src="js/script.js"></script>
+<script src="js/sidenav.js"></script>
 </body>
 </html>
