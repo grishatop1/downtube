@@ -9,24 +9,16 @@
 </head>
 <body>
 
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
-    <a href="#">HOME</a>
-    <a href="#">Downloads</a>
-    <a href="#">Settings</a>
-    <a href="#">Report a bug</a>
-</div>
-
 <div id="main">
     <div class="header">
         <div class="menu-icon-block" onclick="toggleNav()">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="menunav">
-                <rect id="rect3" x="2" y="12" width="16" height="2" fill="white"/>
-                <rect id="rect2" x="2" y="8" width="16" height="2" fill="white"/>
-                <rect id="rect1" x="2" y="4" width="16" height="2" fill="white"/>
+            <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Polygon 1" d="M79 47.0359C81.6667 48.5755 81.6667 52.4245 79 53.9641L34.75 79.5118C32.0833 81.0515 28.75 79.127 28.75 76.0477L28.75 24.9522C28.75 21.873 32.0833 19.9485 34.75 21.4881L79 47.0359Z" fill="white"/>
+                <g id="arrow-group">
+                <path id="Arrow 2" d="M44.1716 90.8284C45.7337 92.3905 48.2663 92.3905 49.8284 90.8284L75.2843 65.3726C76.8464 63.8105 76.8464 61.2778 75.2843 59.7157C73.7222 58.1536 71.1895 58.1536 69.6274 59.7157L47 82.3431L24.3726 59.7157C22.8105 58.1536 20.2778 58.1536 18.7157 59.7157C17.1536 61.2778 17.1536 63.8105 18.7157 65.3726L44.1716 90.8284ZM43 13L43 88L51 88L51 13L43 13Z" fill="#1f1f1f"/>
+                <path id="Arrow 1" d="M44.8787 90.1213C46.0502 91.2929 47.9497 91.2929 49.1213 90.1213L68.2132 71.0294C69.3848 69.8579 69.3848 67.9584 68.2132 66.7868C67.0416 65.6152 65.1421 65.6152 63.9706 66.7868L47 83.7574L30.0294 66.7868C28.8579 65.6152 26.9584 65.6152 25.7868 66.7868C24.6152 67.9584 24.6152 69.8579 25.7868 71.0294L44.8787 90.1213ZM44 13L44 88L50 88L50 13L44 13Z" fill="white"/>
                 </g>
-            </svg>                  
+            </svg>             
         </div>
         <div class="header-text">
             DownTube
@@ -38,7 +30,7 @@
 
     <div class="page" id="home-page">
         <div class="input-block">
-            <input type="text" id="input-link" placeholder="Paste link here">
+            <input type="text" placeholder="Paste link here" id="main-input">
         </div>
     </div>
 
@@ -50,6 +42,6 @@
     </div>
 </div>
 
-<script src="js/sidenav.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
