@@ -52,23 +52,26 @@
           <div class="info-tab">
             <button id="format-undo" onclick="changePage('link')">BACK</button>
             <div class="info-title">LOADING...</div>
-            <div class="info-thumb">
+            <div class="info-wrap1">
+              <div class="info-thumb">
+                <img src="" style="width: 100%; height: 100%;">
+              </div>
+              <div class="info-desc">Loading...</div>
             </div>
-            <div class="info-desc">Loading...</div>
           </div>
           <div class="format-buttons">
             <button id="mp3-btn" class="format-btn">MP3</button>
-            <button id="mp4-btn" class="format-btn">MP4</button>
+            <button id="mp4-btn" class="format-btn" onclick="downloadMP4()">MP4</button>
           </div>
         </div>
         <div class="page" id="page-download">
-          <div class="downloading" style="display: none;">
+          <div class="downloading">
             <h3>DOWNLOADING...</h3>
             <div class="progress-bar">
               <div id="down-progress"></div>
             </div>
           </div>
-          <div class="downloaded">
+          <div class="downloaded" style="display: none;">
             <h3>FILE HAS BEEN SUCESSFULLY DOWNLOADED</h3>
             <button class="format-btn">AGAIN</button>
           </div>

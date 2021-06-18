@@ -25,3 +25,9 @@ function changePage(type) {
         $(".page").css("transform", "")
     }, types[type]+1*700);
 }
+
+function setDataFormatTab(title, desc, thumbnail_url) {
+    $(".info-title").html(title)
+    $(".info-desc").html(desc)
+    $(".info-thumb img").attr("src", thumbnail_url)
+}

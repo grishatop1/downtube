@@ -101,7 +101,7 @@ body {
   top:50%;
   transform: translateY(-50%);
   right: -640px;
-  transition: all 1.2s;
+  transition: transform 1.2s;
 }
 
 .scroller {
@@ -186,9 +186,13 @@ body {
 .info-desc {
   color:rgb(116, 116, 116);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: inline-block;
   vertical-align: top;
   padding: 8px;
+  overflow: hidden;
+  width: 50%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .info-thumb {
@@ -196,6 +200,11 @@ body {
   height: 120px;
   background-color: #272727;
   display: inline-block;
+}
+
+.info-wrap1 {
+  display: flex;
+  justify-content: left;
 }
 
 #format-undo {
@@ -236,7 +245,7 @@ body {
 }
 
 #down-progress {
-  width: 60%;
+  width: 0%;
   height: 20px;
   background-color: var(--primary-color);
   transition: width 0.2s;
