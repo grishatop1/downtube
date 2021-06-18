@@ -1,47 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/jq.js"></script>
 
-    <link rel="stylesheet" href="css/index.css">
-</head>
-<body>
-
-<div id="main">
-    <div class="header">
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div class="header">
         <div class="menu-icon-block" onclick="toggleNav()">
-            <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="Polygon 1" d="M79 47.0359C81.6667 48.5755 81.6667 52.4245 79 53.9641L34.75 79.5118C32.0833 81.0515 28.75 79.127 28.75 76.0477L28.75 24.9522C28.75 21.873 32.0833 19.9485 34.75 21.4881L79 47.0359Z" fill="white"/>
-                <g id="arrow-group">
-                <path id="Arrow 2" d="M44.1716 90.8284C45.7337 92.3905 48.2663 92.3905 49.8284 90.8284L75.2843 65.3726C76.8464 63.8105 76.8464 61.2778 75.2843 59.7157C73.7222 58.1536 71.1895 58.1536 69.6274 59.7157L47 82.3431L24.3726 59.7157C22.8105 58.1536 20.2778 58.1536 18.7157 59.7157C17.1536 61.2778 17.1536 63.8105 18.7157 65.3726L44.1716 90.8284ZM43 13L43 88L51 88L51 13L43 13Z" fill="#1f1f1f"/>
-                <path id="Arrow 1" d="M44.8787 90.1213C46.0502 91.2929 47.9497 91.2929 49.1213 90.1213L68.2132 71.0294C69.3848 69.8579 69.3848 67.9584 68.2132 66.7868C67.0416 65.6152 65.1421 65.6152 63.9706 66.7868L47 83.7574L30.0294 66.7868C28.8579 65.6152 26.9584 65.6152 25.7868 66.7868C24.6152 67.9584 24.6152 69.8579 25.7868 71.0294L44.8787 90.1213ZM44 13L44 88L50 88L50 13L44 13Z" fill="white"/>
-                </g>
-            </svg>             
+          <svg
+            width="45"
+            height="45"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Polygon 1"
+              d="M79 47.0359C81.6667 48.5755 81.6667 52.4245 79 53.9641L34.75 79.5118C32.0833 81.0515 28.75 79.127 28.75 76.0477L28.75 24.9522C28.75 21.873 32.0833 19.9485 34.75 21.4881L79 47.0359Z"
+              fill="white"
+            />
+            <g id="arrow-group">
+              <path
+                id="Arrow 2"
+                d="M44.1716 90.8284C45.7337 92.3905 48.2663 92.3905 49.8284 90.8284L75.2843 65.3726C76.8464 63.8105 76.8464 61.2778 75.2843 59.7157C73.7222 58.1536 71.1895 58.1536 69.6274 59.7157L47 82.3431L24.3726 59.7157C22.8105 58.1536 20.2778 58.1536 18.7157 59.7157C17.1536 61.2778 17.1536 63.8105 18.7157 65.3726L44.1716 90.8284ZM43 13L43 88L51 88L51 13L43 13Z"
+                fill="#1f1f1f"
+              />
+              <path
+                id="Arrow 1"
+                d="M44.8787 90.1213C46.0502 91.2929 47.9497 91.2929 49.1213 90.1213L68.2132 71.0294C69.3848 69.8579 69.3848 67.9584 68.2132 66.7868C67.0416 65.6152 65.1421 65.6152 63.9706 66.7868L47 83.7574L30.0294 66.7868C28.8579 65.6152 26.9584 65.6152 25.7868 66.7868C24.6152 67.9584 24.6152 69.8579 25.7868 71.0294L44.8787 90.1213ZM44 13L44 88L50 88L50 13L44 13Z"
+                fill="white"
+              />
+            </g>
+          </svg>
         </div>
-        <div class="header-text">
-            DownTube
-        </div>
+        <div class="header-text">DownTube</div>
 
-        <div class="header-drag pywebview-drag-region">
+        <div class="header-drag pywebview-drag-region"></div>
+      </div>
+
+    <div class="content">
+      <div class="scroller">
+        <div class="page" id="page-link">
+          <input value="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="text" id="link-input" placeholder="Paste YouTube video URL" oninput="validateYouTubeUrl()">
         </div>
+        <div class="page" id="page-format">
+          <div class="info-tab">
+            <button id="format-undo" onclick="changePage('link')">BACK</button>
+            <div class="info-title">LOADING...</div>
+            <div class="info-thumb">
+            </div>
+            <div class="info-desc">Loading...</div>
+          </div>
+          <div class="format-buttons">
+            <button id="mp3-btn" class="format-btn">MP3</button>
+            <button id="mp4-btn" class="format-btn">MP4</button>
+          </div>
+        </div>
+        <div class="page" id="page-download">
+          <div class="downloading" style="display: none;">
+            <h3>DOWNLOADING...</h3>
+            <div class="progress-bar">
+              <div id="down-progress"></div>
+            </div>
+          </div>
+          <div class="downloaded">
+            <h3>FILE HAS BEEN SUCESSFULLY DOWNLOADED</h3>
+            <button class="format-btn">AGAIN</button>
+          </div>
+        </div>
+      </div>
+
+
+      <svg id="wheel" width="800" height="800" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="Frame 1" clip-path="url(#clip0)">
+        <rect width="400" height="400" fill="none"/>
+        <g id="Obj">
+        <g id="visual">
+        <g id="Ellipse 1" filter="url(#filter0_i)">
+        <circle cx="200" cy="200" r="150" transform="rotate(-45 200 200)" fill="#2C2C2C"/>
+        </g>
+        <line id="Line 1" x1="93.5804" y1="305.712" x2="305.712" y2="93.5804" stroke="white"/>
+        <line id="Line 2" x1="54.9817" y1="238.34" x2="344.759" y2="160.694" stroke="white"/>
+        <line id="Line 4" x1="55.2406" y1="160.694" x2="345.018" y2="238.34" stroke="white"/>
+        <line id="Line 6" x1="94.2876" y1="93.5804" x2="306.42" y2="305.712" stroke="white"/>
+        <line id="Line 3" x1="160.694" y1="344.759" x2="238.34" y2="54.9817" stroke="white"/>
+        <line id="Line 5" x1="238.34" y1="345.018" x2="160.694" y2="55.2405" stroke="white"/>
+        </g>
+        <g id="LINK" filter="url(#filter1_d)">
+        <path d="M64.377 211.354V207.985H65.1436V212.296H58.0342V211.354H64.377ZM65.1436 205.909V206.847H58.0342V205.909H65.1436ZM65.1436 198.727V199.669L59.6651 203.248H65.1436V204.191H58.0342V203.248L63.5372 199.659H58.0342V198.727H65.1436ZM61.838 195.255L62.7413 196.124H65.1436V197.062H58.0342V196.124H61.5499L58.0342 192.965V191.832L61.1739 194.63L65.1436 191.613V192.736L61.838 195.255Z" fill="white"/>
+        </g>
+        <g id="FORMAT" filter="url(#filter2_d)">
+        <path d="M87.8942 280.384L89.3859 282.968L92.1049 281.398L92.5737 282.21L86.4168 285.765L84.2146 281.95L84.8828 281.565L86.6162 284.567L88.722 283.351L87.2303 280.767L87.8942 280.384ZM84.1959 274.35C84.7992 274.001 85.385 273.798 85.9532 273.741C86.5186 273.685 87.0272 273.775 87.4788 274.01C87.9305 274.246 88.2995 274.612 88.586 275.108C88.8659 275.593 88.9957 276.091 88.9754 276.603C88.9523 277.116 88.781 277.604 88.4617 278.066C88.1379 278.528 87.6873 278.929 87.1098 279.27L86.6658 279.526C86.0738 279.868 85.4914 280.067 84.9187 280.123C84.346 280.179 83.8317 280.089 83.3756 279.853C82.915 279.615 82.5448 279.253 82.2648 278.769C81.98 278.275 81.8492 277.772 81.8723 277.259C81.891 276.744 82.0687 276.254 82.4054 275.789C82.7393 275.326 83.2064 274.921 83.8069 274.574L84.1959 274.35ZM84.2647 275.387C83.5346 275.808 83.0596 276.278 82.8399 276.796C82.6173 277.315 82.6582 277.839 82.9625 278.366C83.2588 278.879 83.6883 279.17 84.251 279.24C84.8093 279.309 85.4377 279.147 86.136 278.755L86.5885 278.494C87.2961 278.085 87.7674 277.616 88.0025 277.085C88.2331 276.554 88.1978 276.027 87.8967 275.506C87.594 274.981 87.1693 274.685 86.6227 274.617C86.0733 274.551 85.4396 274.72 84.7214 275.123L84.2647 275.387ZM82.5781 270.649L83.4131 272.095L85.9038 270.657L86.3749 271.473L80.218 275.028L79.0413 272.99C78.6409 272.296 78.4912 271.672 78.592 271.118C78.6913 270.561 79.0426 270.108 79.6459 269.76C80.0293 269.538 80.4236 269.45 80.8287 269.494C81.2323 269.535 81.6111 269.7 81.9653 269.988L83.7436 267.033L83.7944 267.004L84.2973 267.875L82.5781 270.649ZM82.7492 272.479L82.029 271.231C81.7962 270.828 81.5072 270.568 81.1619 270.452C80.8149 270.333 80.4666 270.374 80.1171 270.576C79.7365 270.796 79.5106 271.078 79.4395 271.424C79.3667 271.766 79.4526 272.153 79.6972 272.583L80.415 273.826L82.7492 272.479ZM76.5291 268.639L80.3906 263.725L74.2049 264.613L73.597 263.56L79.7539 260.005L80.2226 260.817L77.825 262.202L75.1931 263.62L81.3457 262.762L81.7045 263.384L77.8962 268.272L80.4251 266.705L82.8227 265.321L83.2915 266.133L77.1346 269.687L76.5291 268.639ZM75.3125 256.024L76.8018 258.603L78.7431 258.255L79.2265 259.092L71.7122 260.296L71.302 259.585L76.0991 253.675L76.58 254.508L75.3125 256.024ZM75.992 258.744L74.7835 256.65L72.5093 259.362L75.992 258.744ZM67.9931 252.311L69.1357 254.29L74.6245 251.121L75.0908 251.929L69.602 255.098L70.7421 257.072L70.074 257.458L67.325 252.697L67.9931 252.311Z" fill="white"/>
+        </g>
+        <g id="DOWNLOAD" filter="url(#filter3_d)">
+        <path d="M154.618 328.97L151.063 335.126L149.325 334.123C148.79 333.814 148.384 333.422 148.11 332.948C147.835 332.473 147.712 331.953 147.742 331.388C147.768 330.82 147.944 330.253 148.268 329.684L148.495 329.291C148.831 328.71 149.237 328.267 149.715 327.96C150.19 327.652 150.704 327.501 151.256 327.508C151.805 327.513 152.358 327.672 152.914 327.986L154.618 328.97ZM150.637 333.99L153.423 329.165L152.569 328.672C151.943 328.31 151.344 328.224 150.773 328.413C150.199 328.6 149.704 329.053 149.289 329.772L149.081 330.131C148.678 330.831 148.529 331.468 148.636 332.045C148.739 332.623 149.09 333.089 149.69 333.443L150.637 333.99ZM142.536 325.834C142.884 325.23 143.29 324.762 143.754 324.428C144.215 324.097 144.701 323.92 145.209 323.898C145.718 323.876 146.221 324.009 146.717 324.295C147.202 324.575 147.563 324.942 147.802 325.395C148.038 325.851 148.134 326.359 148.089 326.919C148.039 327.481 147.849 328.054 147.519 328.638L147.263 329.082C146.921 329.674 146.517 330.137 146.049 330.472C145.581 330.807 145.09 330.986 144.577 331.009C144.059 331.034 143.558 330.906 143.073 330.626C142.58 330.341 142.215 329.971 141.978 329.515C141.737 329.06 141.646 328.547 141.705 327.976C141.763 327.408 141.965 326.823 142.311 326.223L142.536 325.834ZM143.114 326.697C142.693 327.428 142.516 328.072 142.585 328.63C142.652 329.191 142.949 329.624 143.476 329.928C143.989 330.225 144.507 330.262 145.029 330.041C145.547 329.821 146.01 329.367 146.419 328.679L146.68 328.226C147.089 327.519 147.262 326.876 147.2 326.3C147.134 325.724 146.841 325.286 146.319 324.984C145.795 324.682 145.279 324.638 144.772 324.852C144.263 325.07 143.798 325.532 143.378 326.241L143.114 326.697ZM140.532 323.425L140.883 322.545L140.287 323.176L136.589 326.77L135.904 326.374L137.196 321.392L137.456 320.55L136.847 321.303L133.459 324.963L132.643 324.492L137.691 319.197L138.431 319.624L137.109 324.843L136.935 325.368L137.304 324.955L141.209 321.228L141.949 321.655L139.883 328.671L139.071 328.203L140.532 323.425ZM130.561 315.08L131.377 315.552L131.738 322.086L134.477 317.341L135.293 317.812L131.738 323.969L130.922 323.498L130.566 316.938L127.814 321.704L127.007 321.237L130.561 315.08ZM127.92 314.441L125.002 312.756L125.385 312.092L129.119 314.248L125.565 320.405L124.748 319.934L127.92 314.441ZM118.34 311.864C118.688 311.261 119.094 310.792 119.557 310.458C120.019 310.127 120.504 309.951 121.013 309.929C121.522 309.907 122.025 310.039 122.521 310.325C123.006 310.605 123.367 310.972 123.605 311.425C123.842 311.881 123.938 312.39 123.892 312.95C123.843 313.511 123.653 314.084 123.323 314.668L123.067 315.112C122.725 315.704 122.32 316.167 121.852 316.502C121.385 316.838 120.894 317.017 120.381 317.04C119.863 317.064 119.362 316.936 118.877 316.656C118.383 316.372 118.018 316.001 117.782 315.545C117.541 315.09 117.45 314.577 117.509 314.006C117.566 313.438 117.768 312.853 118.115 312.253L118.34 311.864ZM118.918 312.728C118.496 313.458 118.32 314.102 118.388 314.66C118.455 315.222 118.752 315.654 119.28 315.959C119.793 316.255 120.31 316.292 120.833 316.072C121.35 315.852 121.814 315.398 122.223 314.709L122.484 314.256C122.892 313.549 123.066 312.907 123.004 312.33C122.938 311.754 122.644 311.316 122.123 311.015C121.598 310.712 121.083 310.668 120.575 310.882C120.066 311.1 119.602 311.563 119.182 312.271L118.918 312.728ZM114.55 307.979L117.129 309.468L118.636 308.196L119.474 308.679L113.568 313.479L112.858 313.068L114.057 305.552L114.89 306.033L114.55 307.979ZM116.498 309.995L114.405 308.786L113.791 312.271L116.498 309.995ZM113.228 305.073L109.673 311.23L107.935 310.227C107.4 309.917 106.995 309.525 106.72 309.051C106.445 308.577 106.322 308.057 106.352 307.491C106.378 306.924 106.554 306.356 106.878 305.788L107.105 305.395C107.441 304.814 107.847 304.37 108.325 304.063C108.8 303.755 109.314 303.604 109.866 303.611C110.415 303.617 110.968 303.776 111.524 304.089L113.228 305.073ZM109.247 310.093L112.033 305.268L111.179 304.775C110.553 304.414 109.954 304.327 109.383 304.516C108.809 304.704 108.314 305.157 107.899 305.875L107.692 306.235C107.288 306.934 107.139 307.572 107.246 308.149C107.349 308.726 107.7 309.192 108.3 309.546L109.247 310.093Z" fill="white"/>
+        </g>
+        </g>
+        </g>
+        <defs>
+        <filter id="filter0_i" x="-12.132" y="-12.132" width="424.264" height="424.264" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect1_innerShadow"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="5"/>
+        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+        </filter>
+        <filter id="filter1_d" x="54.0342" y="187.613" width="15.1094" height="28.6836" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+        </filter>
+        <filter id="filter2_d" x="63.325" y="247.121" width="33.2487" height="42.6436" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+        </filter>
+        <filter id="filter3_d" x="102.347" y="299.611" width="56.2706" height="39.5155" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+        </filter>
+        <clipPath id="clip0">
+        <rect width="400" height="400" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+
+      </div>
+
+
+      <div class="exit-block">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#FFFFFF"
+          onclick="pywebview.api.quit()"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          />
+        </svg>
+      </div>
     </div>
 
-    <div class="page" id="home-page">
-        <div class="input-block">
-            <input type="text" placeholder="Paste link here" id="main-input">
-        </div>
-    </div>
-
-    <div class="page" id="downloads-page" style="display: none;"></div>
-    <div class="page" id="settings-page" style="display: none;"></div>
-
-    <div class="exit-block">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF" onclick="pywebview.api.quit()"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-    </div>
-</div>
-
-<script src="js/home.js"></script>
-</body>
+    <script src="js/home.js"></script>
+    <script src="js/page.js"></script>
+  </body>
 </html>
