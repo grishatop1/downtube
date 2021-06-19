@@ -31,3 +31,47 @@ function setDataFormatTab(title, desc, thumbnail_url) {
     $(".info-desc").html(desc)
     $(".info-thumb img").attr("src", thumbnail_url)
 }
+
+function setProgressBarWidth(percent) {
+    document.getElementById("down-progress").style.width = percent + "%";
+}
+
+function setProgressText(text) {
+    $(".downloading h3").html(text)
+}
+
+function setDownloaded() {
+    $(".downloading").css("display", "none")
+    $(".downloaded").css("display", "flex")
+    setTimeout(function() {
+        animateCheck()
+    }, 150)
+}
+
+function resetDownloaded() {
+    $(".downloaded").css("display", "none")
+    $(".downloading").css("display", "flex")
+}
+
+function reset() {
+    setDataFormatTab("LOADING...", "Loading...", "")
+    $("#link-input").val("")
+    setProgressBarWidth(0)
+    setProgressText("LOADING...")
+    changePage("link")
+    setTimeout(function() {
+        resetDownloaded()
+    }, 500)
+}
+
+function setVideoNotFound() {
+    setDataFormatTab(
+        "Video not found :/",
+        "Maybe it is also problem with your internet connection, idk...",
+        "")
+}
+
+function animateCheck() {
+    $("#svg-check #check").css("animation", "pop-up 0.8s 1 forwards")
+    $("#svg-check #backanim").css("transform", "scale(1.8)")
+}

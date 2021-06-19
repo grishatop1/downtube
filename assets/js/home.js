@@ -19,3 +19,8 @@ function downloadMP4() {
     changePage("download");
     pywebview.api.downloadVideo(url);
 }
+
+function downloadMP3() {
+    changePage("download");
+    pywebview.api.downloadAudio(url);
+}
