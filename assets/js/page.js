@@ -41,13 +41,19 @@ function setProgressText(text) {
 }
 
 function setDownloaded() {
-    $(".downloading").css("display", "none")
-    $(".downloaded").css("display", "flex")
+    $(".downloading").css("opacity", "0")
+    setTimeout(function() {
+        $(".downloading").css("display", "none");
+        $(".downloaded").css("display", "flex");
+        setTimeout(function() {
+            $(".downloaded").css("opacity", "1")
+        }, 170)
+    }, 170)
 }
 
 function resetDownloaded() {
-    $(".downloaded").css("display", "none")
-    $(".downloading").css("display", "flex")
+    $(".downloaded").css({"display":"none", "opacity": "0"})
+    $(".downloading").css({"display":"flex", "opacity":"1"})
 }
 
 function reset() {

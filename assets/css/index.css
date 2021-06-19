@@ -258,6 +258,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: opacity 170ms;
 }
 
 .downloaded {
@@ -266,9 +267,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  display: flex;
-}
-
-#svg-check {
-  vertical-align: middle;
+  display: none;
+  opacity: 0;
+  transition: opacity 170ms;
 }
