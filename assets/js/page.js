@@ -43,9 +43,6 @@ function setProgressText(text) {
 function setDownloaded() {
     $(".downloading").css("display", "none")
     $(".downloaded").css("display", "flex")
-    setTimeout(function() {
-        animateCheck()
-    }, 150)
 }
 
 function resetDownloaded() {
@@ -69,9 +66,4 @@ function setVideoNotFound() {
         "Video not found :/",
         "Maybe it is also problem with your internet connection, idk...",
         "")
-}
-
-function animateCheck() {
-    $("#svg-check #check").css("animation", "pop-up 0.8s 1 forwards")
-    $("#svg-check #backanim").css("transform", "scale(1.8)")
 }

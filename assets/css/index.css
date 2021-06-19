@@ -269,23 +269,6 @@ body {
   display: flex;
 }
 
-#svg-check #check {
-  transform-origin: center;
-}
-
-#svg-check #backanim {
-  transform-origin: center;
-  transition: transform 0.8s ease-in;
-}
-
-@keyframes pop-up {
-  from {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2.5);
-  }
-  to {
-    transform: scale(1.5);
-  }
+#svg-check {
+  vertical-align: middle;
 }
