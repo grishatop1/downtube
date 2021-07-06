@@ -81,6 +81,7 @@ class VideoProcess:
 		progress = int(((size-bytes_remaining)/size)*100)
 		api._window.evaluate_js("setProgressBarWidth("+str(progress)+")")
 		api._window.evaluate_js("setProgressText('DOWNLOADING...')")
+		api._window.evaluate_js("setPercentText("+str(progress)+")")
 
 	def complete(self, stream, fp):
 		api._window.evaluate_js("setDownloaded()")

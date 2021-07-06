@@ -40,6 +40,10 @@ function setProgressText(text) {
     $(".downloading h3").html(text)
 }
 
+function setPercentText(percent) {
+    $("#down-percent").html(percent + "%")
+}
+
 function setDownloaded() {
     $(".downloading").css("opacity", "0")
     setTimeout(function() {
