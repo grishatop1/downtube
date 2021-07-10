@@ -58,6 +58,7 @@ function setDownloaded() {
 function resetDownloaded() {
     $(".downloaded").css({"display":"none", "opacity": "0"})
     $(".downloading").css({"display":"flex", "opacity":"1"})
+    setPercentText(0)
 }
 
 function reset() {
