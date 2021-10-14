@@ -45,14 +45,16 @@ class VideoProcess:
 			api._window.evaluate_js("reset()")
 		try:
 			api._window.evaluate_js("setProgressText('GETTING INFO...')")
-			self.video = yt.streams.first()
+			self.video = yt.streams.filter(res="720p").first()
 		except Exception as e:
 			print(e)
+			return
 		try:
 			api._window.evaluate_js("setProgressText('STARTING DOWNLOAD...')")
 			self.video.download("Downloads/Video/")
 		except Exception as e:
 			print(e)
+			return
 	
 	def startDownloadAudio(self):
 		yt = YouTube(self.url, 
